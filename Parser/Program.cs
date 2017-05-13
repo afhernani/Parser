@@ -45,6 +45,7 @@ namespace Parser
 			bool userWantsToExit = false;
 			TextReader cin = Console.In;
 			TextWriter Out = Console.Out;
+			Expression expr = new Expression();
 			string cad;
 			//get input
 			while (!userWantsToExit) 
@@ -55,7 +56,7 @@ namespace Parser
 				}
 				try 
 				{
-					Expression expr = new Expression(new TokenStream(cad.Trim()));
+					expr.AddTokenStream(new TokenStream(cad.Trim()));
 					expr.Calculate();
 				} 
 				catch (Exception ex)

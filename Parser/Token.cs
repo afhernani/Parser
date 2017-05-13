@@ -118,9 +118,13 @@ namespace Parser
 	/// </summary>
 	public class TokenStream
 	{
-		private static StreamReader Str{ get; set; }
+		StreamReader Str{ get; set; }
 		public TokenStream(string cad)
 			: this()
+		{
+			AddStream(cad);
+		}
+		public void AddStream(string cad)
 		{
 			// convert string to stream
 			byte[] byteArray = Encoding.UTF8.GetBytes(cad);
@@ -344,7 +348,15 @@ namespace Parser
 	{
 		TokenStream ts;
 		
+		public Expression()
+		{
+			
+		}
 		public Expression(TokenStream ts)
+		{
+			this.ts = ts;
+		}
+		public void AddTokenStream(TokenStream ts)
 		{
 			this.ts = ts;
 		}
